@@ -1,0 +1,26 @@
+# Mac files
+.DS_Store
+
+# Eclipse project files
+/.project
+/.pydevproject
+/.buildpath
+/.settings
+
+# VSCode files
+/.vscode
+*.code-workspace
+
+# Vagrant files
+/vagrant/config.yml
+/.vagrant/
+
+# Application files
+/data/theme
+/data/*.sql
+/data/.env
+/.env
+
+# Extra files
+/tmp/
+*.log
