@@ -1,0 +1,43 @@
+version: "3.7"
+
+services:
+  interface:
+    image: zimagi/zimagi-ui
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+      args:
+        - MODX_VERSION
+        - MODX_SHA1
+    entrypoint: zimagi-interface
+    environment:
+      MODX_DB_HOST: data
+      MODX_DB_PORT: 3306
+    env_file: .env
+    volumes:
+      - ./php/datetime.ini:/usr/local/etc/php/conf.d/datetime.ini
+      - ./php/opcache.ini:/usr/local/etc/php/conf.d/opcache.ini
+      - ./app:/usr/local/share/zimagi-ui
+      - ./data:/var/local/zimagi-ui
+    ports:
+      - "8080:80"
+    depends_on:
+      - data
+
+  data:
+    image: mysql:8.0
+    command: mysqld --sql-mode=NO_ENGINE_SUBSTITUTION
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MODX_DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MODX_DB_NAME}
+      MYSQL_USER: ${MODX_DB_USER}
+      MYSQL_PASSWORD: ${MODX_DB_PASSWORD}
+    volumes:
+      - app-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  app-data:
+    external: false
