@@ -1,0 +1,26 @@
+# This file contains default settings for the Vagrant development environment.
+#
+# If you need to override any of these configurations on your own platform then
+# copy this file into a "config.yml" in the vagrant directory
+# (directory of this file) and your overrides will take effect on the next
+# vagrant up or reload.
+#
+hostname: "zimagi-ui"
+box_name: "bento/ubuntu-20.04"
+user: "vagrant"
+cpus: 1
+memory_size: 2048
+copy_vimrc: false
+copy_profile: false
+copy_bash_aliases: false
+copy_bashrc: false
+port:
+  - guest: 8000 # Website frontend
+    host: 8080
+  - guest: 3306 # MySQL database
+    host: 3307
+time_zone: "America/New_York"
+log_output: "/var/log/bootstrap.log"
+log_level: warning
+zimagi_theme: https://github.com/zimagi/modx-theme-data-visualizer.git
+zimagi_theme_version: master
