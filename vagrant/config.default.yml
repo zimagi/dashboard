@@ -15,8 +15,8 @@ copy_profile: false
 copy_bash_aliases: false
 copy_bashrc: false
 port:
-  - guest: 8000 # Website frontend
-    host: 8080
+  - guest: 8080 # Website frontend
+    host: 8081
   - guest: 3306 # MySQL database
     host: 3307
 time_zone: "America/New_York"
