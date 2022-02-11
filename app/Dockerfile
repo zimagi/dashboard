@@ -11,9 +11,10 @@ RUN curl -sS https://getcomposer.org/installer -o composer-setup.php \
 	&& php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
 	&& rm -f composer-setup.php
 
-ENV PATH /usr/local/share/gitify:$PATH
+ENV PATH /usr/local/share/gitify/bin:$PATH
 RUN git clone https://github.com/modmore/Gitify.git /usr/local/share/gitify \
-	&& composer install --no-interaction --no-dev --working-dir=/usr/local/share/gitify
+	&& composer install --no-interaction --no-dev --working-dir=/usr/local/share/gitify \
+	&& chmod 755 /usr/local/share/gitify/bin/gitify
 
 ARG MODX_VERSION
 ARG MODX_SHA1

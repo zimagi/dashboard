@@ -40,8 +40,8 @@ else
 	rm -Rf setup
 fi
 chown -R www-data:www-data * .*
-Gitify package:install --all
-Gitify build
+gitify package:install --all
+gitify build
 #
 # Run web server
 #
