@@ -41,7 +41,7 @@ else
 fi
 chown -R www-data:www-data * .*
 gitify package:install --all
-gitify build
+gitify build -f
 #
 # Run web server
 #
